@@ -1,0 +1,31 @@
+{
+  "name": "e-shop",
+  "version": "1.0.0",
+  "description": "Some internet store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whymeoff/e-shop.git"
+  },
+  "author": "Mark K.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whymeoff/e-shop/issues"
+  },
+  "homepage": "https://github.com/whymeoff/e-shop#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "hbs": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.10",
+    "validator": "^12.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
