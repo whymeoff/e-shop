@@ -27,15 +27,28 @@ router.post('/user/login', async (req, res) => {
 })
 
 router.post('/user/logout', auth, async (req, res) => {
-    req.user.tokens = req.user.tokens.forEach((token) => {
-        return token !== req.user.token
+    req.user.tokens = req.user.tokens.filter((token) => {
+        return token !== req.token
     })
-    
+
     try {
         await req.user.save()
         res.send()
     } catch (e) {
-        res.status(400).send({ error: 'Please, authenticate' })
+        res.status(401).send({ error: 'Please, authenticate' })
+    }
+})
+
+router.post('/user/logoutAll', auth, async (req, res) => {
+    req.user.tokens = req.user.tokens.filter((token) => {
+        return token === req.token
+    })
+
+    try {
+        await req.user.save()
+        res.send()
+    } catch (e) {
+        res.status(401).send({ error: 'Please, authenticate' })
     }
 })
 
