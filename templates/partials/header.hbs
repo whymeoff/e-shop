@@ -1,0 +1,28 @@
+<div class="wrap">
+    <ul class="top-links">
+        <li>About</li>
+        <li>Payments</li>
+        <li>Shipping</li>
+        <li>Contacts</li>
+    </ul>
+    <div class="logo-search-bag">
+        <div class="logo-search">
+            <h1 id="logo">E-Store</h1>
+            <form action="">
+                <input type="text" placeholder="Search">
+                <button type="submit" id="search-btn">Find</button>
+            </form>
+        </div>
+        <div class="bag-login">
+            <form action="{{#if login}}/user/login{{else}}/user/logout{{/if}}" {{#if logout}}method="POST"{{/if}}><button id="{{#if login}}login-btn{{else}}logout-btn{{/if}}">{{#if login}}Login{{else}}Logout{{/if}}</button></form>
+            <form action="#"><button id="cart-btn">Cart</button></form>
+        </div>
+    </div>
+    <ul class="categories">
+            <li>Apple</li>
+            <li>Samsung</li>
+            <li>Huawei</li>
+            <li>Xiaomi</li>
+            <li>Google</li>
+        </ul>
+</div>

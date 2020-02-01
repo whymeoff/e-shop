@@ -1,0 +1,121 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#logo {
+    color: rgb(46, 46, 46);
+    cursor: pointer;
+}
+
+.top-links {
+    display: flex;
+    margin-top: 24px;
+}
+
+.top-links li {
+    list-style: none;
+    margin-right: 24px;
+    cursor: pointer;
+    color: #4f595f;
+    font-size: 14px;
+}
+
+.logo-search-bag {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo-search {
+    display: flex;
+}
+
+.logo-search-bag input {
+    outline: none;
+    border: 0;
+    margin-top: 16px;
+    margin-left: 20px;
+    width: 360px;
+    box-shadow: -4px 0px 28px -12px rgba(168,168,168,1);
+    padding: 16px 0;
+    text-indent: 8px;
+    color: rgb(131, 131, 131);
+    font-size: 14px;
+}
+
+.logo-search-bag #search-btn {
+    margin-left: -3px;
+}
+
+.logo-search-bag #search-btn {
+    border: 0;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    padding: 16px 42px;
+    margin-top: 20px;
+    background: rgb(64,199,129);
+    transition: 0.2s;
+    margin-bottom: 20px;
+} 
+
+.logo-search-bag #search-btn:hover { background: rgb(53, 167, 110); }
+
+.logo-search-bag #search-btn:active {
+    background: rgb(33,147,90);
+}
+
+#login-btn, #logout-btn {
+    border: 0;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    padding: 16px 42px;
+    margin-top: 20px;
+    background: rgb(38, 116, 76);
+    transition: 0.2s;
+    margin-bottom: 20px;
+    margin-right: 24px;
+}
+
+#logout-btn:hover, #login-btn:hover { background: rgb(53, 167, 110); }
+
+#cart-btn {
+    border: 0;
+    font-weight: 700;
+    font-size: 14px;
+    color: rgb(46, 46, 46);
+    text-decoration: none;
+    padding: 16px 42px;
+    margin-top: 20px;
+    background-color: white;
+    transition: 0.2s;
+    margin-bottom: 20px;
+    box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.75);
+}
+
+#cart-btn:hover {
+    box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.75);
+    transition: 0.2s;
+}
+
+.bag-login {
+    display: flex;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    box-shadow: -4px 0px 28px -12px rgba(168,168,168,1);
+    padding: 16px 0;
+    margin-top: 24px;
+}
+
+.categories li {
+    list-style: none;
+    cursor: pointer;
+    color: #4f595f;
+}

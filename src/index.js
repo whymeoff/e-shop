@@ -16,13 +16,13 @@ const app = express()
 const port = process.env.PORT || 3000
 
 // Define path for express config
-const viewsPath = path.join(__dirname, '../templates/views');
-const partialsPath = path.join(__dirname, '../templates/partials');
+const viewsPath = path.join(__dirname, '../templates/views')
+const partialsPath = path.join(__dirname, '../templates/partials')
 
 // Setup handlebars engine and views location
-app.set('view engine', 'hbs');
-app.set('views', viewsPath);
-hbs.registerPartials(partialsPath);
+app.set('view engine', 'hbs')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
 
 // Url encoded setup
 app.use(express.urlencoded({ extended: false }))
@@ -48,6 +48,7 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.use(express.json())
 app.use(require('./routers/main'))
 app.use('/user', require('./routers/user'))
+app.use('/admin', require('./routers/admin'))
 
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`)
