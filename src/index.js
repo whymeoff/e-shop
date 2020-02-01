@@ -6,7 +6,7 @@ const hbs = require('hbs')
 const passport = require('passport')
 const session = require('express-session')
 const flash = require('express-flash')
-const FileStore = require('session-file-store')(session);
+const FileStore = require('connect-loki')(session);
 
 // Passport initialization
 const initializePassport = require('./passport-config')
@@ -33,9 +33,10 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: new FileStore({
-        maxTimeout: 1000*60*60*12
-    })
+    store: new FileStore(),
+    cookie: {
+        maxAge: 1000*60*60*24
+    }
 }))
 app.use(passport.initialize())
 app.use(passport.session())
