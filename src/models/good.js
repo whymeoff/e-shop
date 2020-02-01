@@ -5,6 +5,16 @@ const GoodSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    manufacturer: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    model: {
+        type: String,
+        required: true,
+        trim: true
+    },
     description: {
         type: String,
         required: true,
