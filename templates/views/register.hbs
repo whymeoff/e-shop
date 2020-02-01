@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/register.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form action="/user/register" method="POST" id="reg-form">
+        {{#if errors}}
+            <div class="errors">
+                {{#each errors}}
+                    <div class="error-wrap"><div class="error">{{this}}</div></div>
+                {{/each}}
+            </div>
+        {{/if}}
+        <div>
+            <input type="text" id="name" name="name" placeholder="Name" value="{{#if name}}{{name}}{{/if}}" required>
+        </div>
+        <div>
+            <input type="text" id="age" name="age" placeholder="Age" value="{{#if age}}{{age}}{{/if}}" required>
+        </div>
+        <div>
+            <input type="text" id="email" name="email" placeholder="Email" value="{{#if email}}{{email}}{{/if}}" required>
+        </div>
+        <div>
+            <input type="text" id="password" name="password" placeholder="Password" value="{{#if password}}{{password}}{{/if}}" required>
+        </div>
+        <button type="submit">Register</button>
+        <a href="/user/login">Login</a>
+    </form>
+    {{#each name}}
+        {{this}}
+    {{/each}}
+</body>
+</html>

@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    color: rgb(46, 46, 46);
+}
+
+#reg-form {
+    text-align: center;
+    margin: 0 auto;
+    width: 768px;
+    background: white;
+    box-shadow: 0px 6px 30px 0px rgba(161,161,161,1);
+    color: rgb(131, 131, 131);
+}
+
+#reg-form input {
+    outline: none;
+    border: 0;
+    margin-top: 30px;
+    width: 360px;
+    box-shadow: -4px 0px 28px -12px rgba(168,168,168,1);
+    padding: 16px 0;
+    text-indent: 8px;
+    color: rgb(131, 131, 131);
+}
+
+#reg-form a {
+    text-decoration: none;
+    color: #0c559d;
+    border-bottom: 1px dashed #0c559d;
+    margin-left: 16px;
+}
+
+#reg-form button {
+    border: 0;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+    margin-bottom: 20px;
+} 
+
+#reg-form button:hover { background: rgb(53, 167, 110); }
+
+#reg-form button:active {
+    background: rgb(33,147,90);
+    box-shadow: 0 3px rgb(33,147,90) inset;
+}
+
+.errors {
+    padding-top: 20px;
+}
+
+.error-wrap {
+    display: block;
+    width: 480px;
+    background: rgb(207, 53, 53);
+    box-shadow: 0 -3px rgb(134, 27, 27) inset;
+    margin: 8px auto 0;
+    border-radius: 10px;
+}
+
+.error {
+    padding: 16px 0;
+    color: white;
+}
+
