@@ -1,0 +1,113 @@
+.admin-panel {
+    margin: 32px auto 0;
+    max-width: 1440px;
+    box-shadow: -4px 0px 28px -12px rgba(168,168,168,1);
+    background: white;
+}
+
+.admin-panel h1 {
+    font-size: 60px;
+    color: rgb(46, 46, 46);
+    text-align: center;
+    margin-top: 32px;
+    margin-bottom: 10px;
+}
+
+.admin-panel h2 {
+    color: rgb(46, 46, 46);
+    text-align: center;
+    padding-bottom: 32px;
+}
+
+.admin-links {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 24px;
+}
+
+.admin-links li {
+    list-style: none;
+    cursor: pointer;
+}
+
+.admin-links a {
+    text-decoration: none;
+    color: #4f595f;
+}
+
+.link-active {
+    color: #0c559d !important;
+    border-bottom: 1px dashed #0c559d;
+}
+
+.create-wrap, .edit-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.create-ad-form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-ad-form select {
+    width: 768px;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    margin-bottom: 32px;
+}
+
+.create-ad-form input, .edit-search-wrap input {
+    width: 768px;
+    padding: 16px 0;
+    margin-bottom: 32px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    text-indent: 24px;
+}
+
+.create-ad-form textarea {
+    resize: none;
+    width: 768px;
+    margin-bottom: 32px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    text-indent: 24px;
+    padding-top: 16px;
+}
+
+.create-ad-form button, .edit-search-wrap button {
+    padding: 12px 0;
+    width: 100px;
+    border: 0;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    margin: 0 auto 32px;
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+}
+
+.create-ad-form button:hover, .edit-search-wrap button:hover {
+    background: rgb(53, 167, 110);
+}
+
+.edit-search-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.edit-search-wrap form {
+    display: flex;
+    flex-direction: column;
+}

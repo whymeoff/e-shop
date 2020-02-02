@@ -1,0 +1,17 @@
+<div class="edit-wrap">
+    <form action="/admin/edit" method="POST" class="create-ad-form">
+    <input type="text" placeholder="Name of ad" name="name" required value="{{name}}">
+    <select name="manufacturer" id="manufacturer">
+        <option value="Apple" name="Apple" {{#if_eq manufacturer 'Apple'}}selected{{/if_eq}}>Apple</option>
+        <option value="Samsung" name="Samsung" {{#if_eq manufacturer 'Samsung'}}selected{{/if_eq}}>Samsung</option>
+        <option value="Huawei" name="Huawei" {{#if_eq manufacturer 'Huawei'}}selected{{/if_eq}}>Huawei</option>
+        <option value="Xiaomi" name="Xiaomi" {{#if_eq manufacturer 'Xiaomi'}}selected{{/if_eq}}>Xiaomi</option>
+        <option value="Google" name="Google" {{#if_eq manufacturer 'Google'}}selected{{/if_eq}}>Google</option>
+    </select>
+    <input type="text" placeholder="Model" name="model" required value="{{model}}">
+    <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" required>{{description}}</textarea>
+    <input type="text" placeholder="Amount" name="amount" required value="{{amount}}">
+    <input type="text" placeholder="Price" name="price" required value="{{price}}">
+    <input type="text" name="id" value="{{_id}}" style="display: none;">
+    <button type="submit">Edit</button>
+</div>
