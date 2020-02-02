@@ -1,17 +1,12 @@
 const express = require('express')
+const authButtons = require('../middleware/authButtons')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', authButtons, (req, res) => {
     const options = {}
-    // Check auth for buttons login or logout
-    if (req.isAuthenticated()) {
-        options.logout = true
-    } else {
-        options.login = true
-    }
 
-    return res.render('main', { ...options })
+    return res.render('main', { ...req.authButtons })
 })
 
 module.exports = router
