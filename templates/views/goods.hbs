@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/goods.css">
+    <title>Document</title>
+</head>
+<body>
+    <header style="max-width: 1440px; margin: auto;">
+        {{>header}}
+    </header>
+
+    <div class="goods-panel">
+        <h1>Cases for {{manufacturer}} phones</h1>
+        <select name="goods-sort" id="goods-sort" data-manufacturer="{{manufacturer}}">
+            <option value="price_low" name="Apple" {{#if_eq sortType 'price_low'}}selected{{/if_eq}}>Low price first</option>
+            <option value="price_high" name="Samsung" {{#if_eq sortType 'price_high'}}selected{{/if_eq}}>High price first</option>
+        </select>
+        <div class="items">
+            {{#each goods}}
+                {{>item}}
+            {{/each}}
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -116,6 +116,9 @@
 
 .categories li {
     list-style: none;
-    cursor: pointer;
+}
+
+.categories a {
     color: #4f595f;
+    text-decoration: none;
 }

@@ -1,0 +1,16 @@
+<div class="item">
+    <div class="item-wrap">
+        <a href="/goods/{{this._id}}" class="item-main">
+            <div class="img-wrap"><img src="{{this.img}}" alt=""></div>
+            <p class="item-name">{{this.name}}</p>
+            <p class="item-price">{{this.price}}UAH</p>
+            <p class="item-available"{{#if this.amount}}style="color: green;"{{else}}style="color: red;"{{/if}}>{{#if this.amount}}Есть в наличии{{else}}Нет в наличии{{/if}}</p>
+        </a>
+        <a href="/goods/{{this._id}}" class="item-desc">
+            <p class="item-name-desc">{{this.name}}</p>
+            <p class="item-desc-block">{{this.description}}</p>
+            <form action=""><button id="buy-btn" type="submit">Buy</button></form>
+        </a> 
+    </div>  
+
+</div>

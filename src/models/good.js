@@ -30,6 +30,10 @@ const GoodSchema = new mongoose.Schema({
     },
     code: {
         type: Number
+    },
+    img: {
+        type: String,
+        default: '/img/default.png'
     }
 })
 

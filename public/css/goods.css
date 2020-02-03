@@ -1,0 +1,152 @@
+.goods-panel {
+    max-width: 1440px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0px 0px 30px -10px rgba(168,168,168,1);
+}
+
+.goods-panel h1 {
+    margin-left: 40px;
+    padding-top: 25px;
+    color: rgb(46, 46, 46);
+    margin-bottom: 14px;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 36px;
+}
+
+.item {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.item a {
+    text-decoration: none;
+    color: #4f595f;
+}
+
+.item-wrap {
+    width: 270px;
+    position: relative;
+    margin-bottom: 36px;
+    box-shadow: 0px 0px 30px -10px rgba(168,168,168,1);
+}
+
+.item-main {
+    background-color: #fafafa;
+    height: 365px;
+    display: block;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.item-desc {
+    visibility: hidden;
+    position: absolute;
+    height: 382px;
+    width: 270px;
+    top: 16px;
+    left: 0;
+    display: block;
+    background-color: #fafafa;
+    margin-top: -16px;
+    padding-top: 0px;
+    word-wrap: break-word;
+    border-radius: 4px;
+}
+
+.item-name {
+    display: block;
+    height: 32px;
+    padding-top: 8px;
+}
+
+.item-name-desc {
+    font-size: 1.05em;
+    color: black;
+    padding: 10px 16px !important;
+}
+
+.item-desc-block {
+    padding: 0 16px !important;
+}
+
+.item-price {
+    color: black;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.item-desc p, .item-main p {
+    word-break: break-all;
+    padding: 8px;
+    margin: 0;
+}
+
+.item-wrap:hover .item-desc {
+    visibility: visible;
+}
+
+.item-wrap:hover {
+    box-shadow: 0px 0px 40px -5px rgba(168,168,168,1);
+}
+
+.item-wrap img {
+    width: 250px;
+    max-height: none;
+}
+
+.img-wrap {
+    height: 250px;
+    min-height: 250px;
+    overflow: hidden;
+}
+
+#buy-btn {
+    border: 0;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    padding: 16px 42px;
+    margin-top: 20px;
+    background-color: rgb(38, 116, 76);
+    bottom: 16px;
+    left: 76px;
+    position: absolute;
+    transition: background-color 0.2s; 
+}
+
+#buy-btn:hover { 
+    background: rgb(53, 167, 110);
+    transition: 0.2s; 
+}
+
+select {
+    width: 150px;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fafafa;
+    margin-left: 38px;
+}
+
+@media screen and (max-width: 960px) {
+    .item {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .item {
+        width: 100%;
+    }
+}
+
+
+
+
