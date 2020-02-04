@@ -21,6 +21,7 @@
             </div>
             <div class="right-side">
                 <h2 class="item-name">{{good.name}}</h2>
+                <p class="itemc-code">Code: {{good.code}}</p>
                 <p class="item-available"{{#if good.amount}}style="color: green; background: #f4faf6;"{{else}}style="color: red; background: rgb(255, 236, 236);"{{/if}}>{{#if good.amount}}Available{{else}}Not available{{/if}}</p>
                 <div class="price-block">
                     <p class="item-price">{{good.price}}UAH</p>
