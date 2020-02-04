@@ -2,11 +2,12 @@ const express = require('express')
 const auth = require('../middleware/auth')
 const findInCart = require('../utils/findInCart')
 const Cart = require('../models/cart')
+const authButtons = require('../middleware/authButtons')
 
 const router = express.Router()
 
 //GET => /cart
-router.get('/', auth.auth, async (req, res) => {
+router.get('/', auth.auth, authButtons, async (req, res) => {
     try {
         let cart = await Cart.findOne({ owner: req.user._id })
         const items = await (await cart.populate('items.item').execPopulate()).toObject().items
@@ -15,7 +16,7 @@ router.get('/', auth.auth, async (req, res) => {
             items[i].item.sum = items[i].amount * items[i].item.price
             fullSum += items[i].item.sum
         }
-        res.render('cart', { items, fullSum })
+        res.render('cart', { items, fullSum, ...req.authButtons })
     } catch (e) {
         console.log(e)
         res.redirect('/')

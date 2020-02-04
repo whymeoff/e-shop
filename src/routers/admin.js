@@ -30,20 +30,20 @@ router.get('/orders', isAdmin, authButtons, (req, res) => {
     })
 })
 
-router.post('/create', isAdmin, async (req, res) => {
+router.post('/create', isAdmin, authButtons, async (req, res) => {
     const good = new Good({ ...req.body })
 
     try {
         const count = await Good.countDocuments()
         good.code = count
         await good.save()
-        return res.render('admin', { create: true })
+        return res.render('admin', { create: true, ...req.authButtons })
     } catch (e) {
-        return res.render('admin', { create: true })
+        return res.render('admin', { create: true, ...req.authButtons })
     }
 })
 
-router.post('/edit', isAdmin, async (req, res) => {
+router.post('/edit', isAdmin, authButtons, async (req, res) => {
     try {
         if (req.body.value) {
             let good = await Good.findOne({ code: req.body.value })
@@ -52,10 +52,10 @@ router.post('/edit', isAdmin, async (req, res) => {
             return res.render('admin', { edit: true, ...good })
         } else {
             const good = await Good.findByIdAndUpdate(req.body.id, { ...req.body })
-            res.render('admin', { search: true })
+            res.render('admin', { search: true, ...req.authButtons })
         }
     } catch (e) {
-        return res.render('admin', { search: true })
+        return res.render('admin', { search: true, ...req.authButtons })
     }
 })
 

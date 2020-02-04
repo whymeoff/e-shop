@@ -1,11 +1,12 @@
 const express = require('express')
 const auth = require('../middleware/auth')
 const Good = require('../models/good')
+const authButtons = require('../middleware/authButtons')
 
 const router = express.Router()
 
 //sort query <sort=field_low||high_>
-router.get('/', async (req, res) => {
+router.get('/', authButtons, async (req, res) => {
     try {
         let field, type
         if (req.query.sort) {
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
         type = (type === 'low') ? 1 : -1
 
         const goods = await Good.find({ manufacturer: req.query.manufacturer }).sort([['price', type]])
-        return res.render('goods', { goods, manufacturer: req.query.manufacturer, sortType: req.query.sort || 'price_high' })
+        return res.render('goods', { goods, manufacturer: req.query.manufacturer, sortType: req.query.sort || 'price_high', ...req.authButtons })
     } catch (e) {
         console.log(e)
         res.redirect('/')
@@ -23,10 +24,10 @@ router.get('/', async (req, res) => {
     
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', authButtons, async (req, res) => {
     try {
         const good = await Good.findById(req.params.id)
-        res.render('good', { good })
+        res.render('good', { good, ...req.authButtons })
     } catch (e) {
         console.log(e)
     }
