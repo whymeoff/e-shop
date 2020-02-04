@@ -1,4 +1,5 @@
 const express = require('express')
+const auth = require('../middleware/auth')
 const Good = require('../models/good')
 
 const router = express.Router()
@@ -24,8 +25,24 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const good = await Good.findById(req.params.id)
+        res.render('good', { good })
     } catch (e) {
+        console.log(e)
+    }
+})
 
+router.post('/:id/sendComment', auth.auth, async (req, res) => {
+    try {
+        const good = await Good.findById(req.params.id)
+        const date = new Date()
+
+        good.comments.unshift([req.user.name, req.body.advantages, req.body.disadvantages, req.body.comment, `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()}`])
+        good.isModified('comments')
+
+        await good.save()
+        res.redirect(`/goods/${req.params.id}`)
+    } catch (e) {
+        res.redirect(`/goods/${req.params.id}`)
     }
 })
 

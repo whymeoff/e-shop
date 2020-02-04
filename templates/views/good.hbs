@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/good.css">
+    <link rel="stylesheet" href="/css/comments.css">
+    <title>Document</title>
+</head>
+<body>
+    <header style="max-width: 1440px; margin: auto;">
+        {{>header}}
+    </header>
+
+    <div class="good-panel">
+        <div class="content">
+            <div class="left-side">
+                <div class="img-wrap"><img src="{{good.img}}" alt=""></div>
+            </div>
+            <div class="right-side">
+                <h2 class="item-name">{{good.name}}</h2>
+                <p class="item-available"{{#if good.amount}}style="color: green; background: #f4faf6;"{{else}}style="color: red; background: rgb(255, 236, 236);"{{/if}}>{{#if good.amount}}Available{{else}}Not available{{/if}}</p>
+                <div class="price-block">
+                    <p class="item-price">{{good.price}}UAH</p>
+                    <button id="buy-btn">Buy</button>
+                </div>
+                <div class="item-description">
+                    {{!-- <h3>Description</h3> --}}
+                    <p>{{good.description}}</p>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    {{>comments}}
+</body>
+</html>

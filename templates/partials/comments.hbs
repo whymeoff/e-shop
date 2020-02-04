@@ -1,0 +1,30 @@
+<div class="comments-panel">
+    <form action="/goods/{{good._id}}/sendComment" method="POST">
+        <label for="advantages">Advantages</label>
+        <input type="text" name="advantages"  id="advantages" required>
+        <label for="disadvantages">Disadvantages</label>
+        <input type="text" name="disadvantages" id="disadvantages" required>
+        <label for="comment">Comment</label>
+        <textarea id="comment" cols="30" rows="10" name="comment" required></textarea>
+        <div class="button-block">
+            <p>Leave your comment about this product</p>
+            <button id="send-btn" type="submit">Send</button>
+        </div>
+    </form>
+
+    {{#each good.comments}}
+        <div class="comment-block">
+            <div class="top">
+                <p class="comment-name">{{this.[0]}}</p>
+                <p class="comment-date">{{this.[4]}}</p>
+            </div>
+            <div class="main">
+                <p class="comment">{{this.[3]}}</p>
+                <label for="">Advantages:</label>
+                <p class="advantages">{{this.[1]}}</p>
+                <label for="">Disadvantages:</label>
+                <p class="disadvantages">{{this.[2]}}</p>
+            </div>
+        </div>
+    {{/each}}
+</div>
