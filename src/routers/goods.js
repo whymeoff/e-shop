@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
         const goods = await Good.find({ manufacturer: req.query.manufacturer }).sort([['price', type]])
         return res.render('goods', { goods, manufacturer: req.query.manufacturer, sortType: req.query.sort || 'price_high' })
     } catch (e) {
+        console.log(e)
         res.redirect('/')
     }
     

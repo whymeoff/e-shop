@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/cart.css">
+    <title>Document</title>
+</head>
+<body>
+    <header style="max-width: 1440px; margin: auto;">
+        {{>header}}
+    </header>
+
+    <div class="cart-block">
+        <h2>Cart</h2>
+        {{#if items}}
+            {{#each items}}
+                <div class="good-item">
+                    <div class="left-side">
+                        <button id="delete-button" data-goodID="{{this.item._id}}">X</button>
+                        <div class="img-wrap"><img src="{{this.item.img}}" alt=""></div>
+                    </div>
+                    <div class="middle">
+                        <p class="item-name">{{this.item.name}}</p>
+                        <p class="item-price">{{this.item.price}}UAH</p>
+                    </div>
+                    <div class="right-side">
+                        <div class="amount-set">
+                            <button id="minus-btn" class="amount-set-btn" data-type="minus" data-goodID="{{this.item._id}}">-</button>
+                            <input type="text" value={{this.amount}} disabled>
+                            <button id="plus-btn" class="amount-set-btn" data-type="plus" data-goodID="{{this.item._id}}">+</button>
+                        </div>
+                    </div>
+                    <p class="item-summ">{{this.item.sum}}UAH</p>
+                </div>
+            {{/each}}
+            <div class="in-total">
+                <div class="in-total-text">
+                    <p>In total:</p>
+                    <p class="full-sum">{{fullSum}}UAH</p>
+                </div>
+            <button id="checkout-btn">Checkout</button>
+            </div>
+        {{else}}
+        <h3 class="empty-title">Your cart is empty</h3>
+        {{/if}}
+    </div>
+
+    <script src="/js/cart.js"></script>
+</body>
+</html>

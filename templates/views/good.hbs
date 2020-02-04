@@ -24,7 +24,7 @@
                 <p class="item-available"{{#if good.amount}}style="color: green; background: #f4faf6;"{{else}}style="color: red; background: rgb(255, 236, 236);"{{/if}}>{{#if good.amount}}Available{{else}}Not available{{/if}}</p>
                 <div class="price-block">
                     <p class="item-price">{{good.price}}UAH</p>
-                    <button id="buy-btn">Buy</button>
+                    <form action="/cart?goodID={{good._id}}" method="POST"><button id="buy-btn" type="submit" {{#if_eq good.amount 0}}disabled{{/if_eq}}>Buy</button></form>
                 </div>
                 <div class="item-description">
                     {{!-- <h3>Description</h3> --}}

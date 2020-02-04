@@ -71,6 +71,7 @@
     transition: background-color 0.2s; 
     margin-left: 20px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 #buy-btn:hover { 

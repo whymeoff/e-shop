@@ -14,8 +14,8 @@
             </form>
         </div>
         <div class="bag-login">
-            <form action="{{#if login}}/user/login{{else}}/user/logout{{/if}}" {{#if logout}}method="POST"{{/if}}><button id="{{#if login}}login-btn{{else}}logout-btn{{/if}}">{{#if login}}Login{{else}}Logout{{/if}}</button></form>
-            <form action="#"><button id="cart-btn">Cart</button></form>
+            <form action="{{#if login}}/user/login{{else}}/user/logout{{/if}}" method="POST"><button id="{{#if login}}login-btn{{else}}logout-btn{{/if}}">{{#if login}}Login{{else}}Logout{{/if}}</button></form>
+            <form action="/cart"><button id="cart-btn">Cart</button></form>
         </div>
     </div>
     <ul class="categories">

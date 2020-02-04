@@ -9,8 +9,9 @@
         <a href="/goods/{{this._id}}" class="item-desc">
             <p class="item-name-desc">{{this.name}}</p>
             <p class="item-desc-block">{{this.description}}</p>
-            <form action=""><button id="buy-btn" type="submit">Buy</button></form>
+            <form action="/cart?goodID={{this._id}}" method="POST"><button id="buy-btn" type="submit" {{#if_eq this.amount 0}}disabled{{/if_eq}}>Buy</button></form>
         </a> 
     </div>  
+    {{@root.user.path.to.userID}}
 
 </div>

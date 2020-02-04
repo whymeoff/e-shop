@@ -45,6 +45,7 @@
 
 .logo-search-bag #search-btn {
     margin-left: -3px;
+    cursor: pointer;
 }
 
 .logo-search-bag #search-btn {
@@ -78,6 +79,7 @@
     transition: 0.2s;
     margin-bottom: 20px;
     margin-right: 24px;
+    cursor: pointer;
 }
 
 #logout-btn:hover, #login-btn:hover { background: rgb(53, 167, 110); }
@@ -94,6 +96,7 @@
     transition: 0.2s;
     margin-bottom: 20px;
     box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.75);
+    cursor: pointer;
 }
 
 #cart-btn:hover {
