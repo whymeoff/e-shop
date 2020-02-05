@@ -15,8 +15,7 @@ router.get('/', auth.auth, authButtons, async (req, res) => {
         calcSum(items)
         res.render('cart', { items, ...req.authButtons, cartID: cart._id })
     } catch (e) {
-        console.log(e)
-        res.redirect('/')
+        res.render('cart', { ...req.authButtons })
     }
 })  
 
