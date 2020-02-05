@@ -21,6 +21,10 @@ const OrderSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    status: {
+        type: Number,
+        default: 0
+    },
     items: [{
         item: {
             type: mongoose.Types.ObjectId,
