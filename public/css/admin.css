@@ -112,3 +112,23 @@
     display: flex;
     flex-direction: column;
 }
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    display: block;
+    padding: 16px 0px;
+    width: 180px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4f595f;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 32px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+

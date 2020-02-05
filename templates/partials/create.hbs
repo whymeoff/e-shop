@@ -1,5 +1,5 @@
 <div class="create-wrap">
-    <form action="/admin/create" method="POST" class="create-ad-form">
+    <form action="/admin/create" method="POST" class="create-ad-form" enctype="multipart/form-data">
         <input type="text" placeholder="Name of ad" name="name" required>
         <select name="manufacturer" id="manufacturer">
             <option value="Apple" name="Apple">Apple</option>
@@ -12,6 +12,10 @@
         <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" required></textarea>
         <input type="text" placeholder="Amount" name="amount" required>
         <input type="text" placeholder="Price" name="price" required>
+        <label for="file-upload" class="custom-file-upload">
+        Upload an image
+        </label>
+        <input id="file-upload" type="file" name="img"/>
         <button type="submit">Create</button>
     </form>
 </div>
