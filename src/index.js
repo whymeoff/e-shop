@@ -52,6 +52,7 @@ app.use('/user', require('./routers/user'))
 app.use('/admin', require('./routers/admin'))
 app.use('/goods', require('./routers/goods'))
 app.use('/cart', require('./routers/cart'))
+app.use('/order', require('./routers/order'))
 
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`)

@@ -39,9 +39,9 @@
             <div class="in-total">
                 <div class="in-total-text">
                     <p>In total:</p>
-                    <p class="full-sum">{{fullSum}}UAH</p>
+                    <p class="full-sum">{{items.fullSum}}UAH</p>
                 </div>
-            <button id="checkout-btn">Checkout</button>
+            <form action="/order/{{cartID}}"><button id="checkout-btn">Checkout</button></form>
             </div>
         {{else}}
         <h3 class="empty-title">Your cart is empty</h3>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/order.css">
+    <title>Document</title>
+</head>
+<body>
+    <header style="max-width: 1440px; margin: auto;">
+        {{>header}}
+    </header>
+
+    <div class="order-block">
+        <h2>Order</h2>
+        <div class="items-block">
+             {{#each items}}
+                <div class="good-item">
+                    <div class="left-side">
+                        <div class="img-wrap"><img src="{{this.item.img}}" alt=""></div>
+                    </div>
+                    <div class="middle">
+                        <p class="item-name">{{this.item.name}}</p>
+                        <p class="item-price">{{this.item.price}}UAH</p>
+                    </div>
+                    <div class="right-side">
+                        <div class="amount-set">
+                            <input type="text" value="Quantity: {{this.amount}}" disabled>
+                        </div>
+                    </div>
+                    <p class="item-summ">{{this.item.sum}}UAH</p>
+                </div>
+            {{/each}}
+        </div>
+        <div class="order-params-block">
+            <form action="">
+                <label for="address">Adress(City, post office number)</label>
+                <input type="text" name="address" id="address" required>
+                <label for="addressee">Adressee(Full name)</label>
+                <input type="text" name="addressee" id="addressee" required>
+                <label for="phoneNumber">Phone number</label>
+                <input type="text" name="phoneNumber" id="phoneNumber" required>
+            </form>
+        </div>
+        <div class="in-total-block">
+            <h3>In total</h3>
+            <div class="in-total-text">
+                <p>To pay</p>
+                <p class="full-sum">{{items.fullSum}}UAH</p>
+            </div>
+            <div class="in-total-buttons">
+                <form action=""><button id="accept-btn">Accept</button></form>
+                <form action="/cart"><button id="edit-btn">Edit</button></form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

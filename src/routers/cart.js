@@ -1,6 +1,7 @@
 const express = require('express')
 const auth = require('../middleware/auth')
 const findInCart = require('../utils/findInCart')
+const calcSum = require('../utils/calcSum')
 const Cart = require('../models/cart')
 const authButtons = require('../middleware/authButtons')
 
@@ -11,12 +12,8 @@ router.get('/', auth.auth, authButtons, async (req, res) => {
     try {
         let cart = await Cart.findOne({ owner: req.user._id })
         const items = await (await cart.populate('items.item').execPopulate()).toObject().items
-        let fullSum = 0
-        for (let i = 0; i < items.length; i++) {
-            items[i].item.sum = items[i].amount * items[i].item.price
-            fullSum += items[i].item.sum
-        }
-        res.render('cart', { items, fullSum, ...req.authButtons })
+        calcSum(items)
+        res.render('cart', { items, ...req.authButtons, cartID: cart._id })
     } catch (e) {
         console.log(e)
         res.redirect('/')
@@ -36,11 +33,11 @@ router.post('/', auth.auth, async (req, res) => {
             cart.items[k].amount += 1
             cart.isModified('items')
             await cart.save()
-            return res.redirect(`/goods/${req.query.goodID}`)
+            return res.redirect(`/cart`)
         }
         cart.items = cart.items.concat({ item: req.query.goodID, amount: 1 })
         await cart.save()
-        res.redirect(`/goods/${req.query.goodID}`)
+        res.redirect(`/cart`)
     } catch (e) {
         console.log(e)
         res.redirect('/')
