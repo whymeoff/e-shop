@@ -35,7 +35,7 @@
             {{/each}}
         </div>
         <div class="order-params-block">
-            <form action="">
+            <form action="/order/{{cartID}}" method="POST" id="main-form">
                 <label for="address">Adress(City, post office number)</label>
                 <input type="text" name="address" id="address" required>
                 <label for="addressee">Adressee(Full name)</label>
@@ -51,7 +51,7 @@
                 <p class="full-sum">{{items.fullSum}}UAH</p>
             </div>
             <div class="in-total-buttons">
-                <form action=""><button id="accept-btn">Accept</button></form>
+               <button id="accept-btn" form="main-form">Accept</button>
                 <form action="/cart"><button id="edit-btn">Edit</button></form>
             </div>
         </div>
