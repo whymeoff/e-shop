@@ -33,7 +33,7 @@ const GoodSchema = new mongoose.Schema({
     },
     img: {
         type: String,
-        default: '/img/default.png'
+        required: true
     },
     comments: {
         type: Array,

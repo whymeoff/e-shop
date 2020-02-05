@@ -1,4 +1,6 @@
 const express = require('express')
+const upload = require('../config/multerConfig')
+const fs = require('fs')
 const isAdmin = require('../middleware/isAdmin')
 const authButtons = require('../middleware/authButtons')
 const Good = require('../models/good')
@@ -30,17 +32,20 @@ router.get('/orders', isAdmin, authButtons, (req, res) => {
     })
 })
 
-router.post('/create', isAdmin, authButtons, async (req, res) => {
-    const good = new Good({ ...req.body })
-
-    try {
-        const count = await Good.countDocuments()
-        good.code = count
-        await good.save()
-        return res.render('admin', { create: true, ...req.authButtons })
-    } catch (e) {
-        return res.render('admin', { create: true, ...req.authButtons })
-    }
+router.post('/create', isAdmin, authButtons, upload.single('img'), async (req, res) => {
+    const date = Date.now()
+    fs.writeFile(`./public/img/${date}.png`, req.file.buffer, async () => {
+        const good = new Good({ ...req.body, img: `/img/${date}.png` })
+        try {
+            const count = await Good.countDocuments()
+            good.code = count
+            await good.save()
+            return res.render('admin', { create: true, ...req.authButtons })
+        } catch (e) {
+            console.log(e)
+            return res.render('admin', { create: true, ...req.authButtons })
+        }
+    })
 })
 
 router.post('/edit', isAdmin, authButtons, async (req, res) => {

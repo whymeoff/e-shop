@@ -1,7 +1,7 @@
 <div class="item">
     <div class="item-wrap">
         <a href="/goods/{{this._id}}" class="item-main">
-            <div class="img-wrap"><img src="{{this.img}}" alt=""></div>
+            <div class="img-wrap"><img  src="{{this.img}}" alt=""></div>
             <p class="item-name">{{this.name}}</p>
             <p class="item-price">{{this.price}}UAH</p>
             <p class="item-available"{{#if this.amount}}style="color: green;"{{else}}style="color: red;"{{/if}}>{{#if this.amount}}Available{{else}}Not available{{/if}}</p>
@@ -11,7 +11,6 @@
             <p class="item-desc-block">{{this.description}}</p>
             <form action="/cart?goodID={{this._id}}" method="POST"><button id="buy-btn" type="submit" {{#if_eq this.amount 0}}disabled{{/if_eq}}>Buy</button></form>
         </a> 
-    </div>  
-    {{@root.user.path.to.userID}}
+    </div> 
 
 </div>
