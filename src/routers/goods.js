@@ -33,7 +33,7 @@ router.get('/:id', authButtons, async (req, res) => {
     }
 })
 
-router.post('/:id/sendComment', auth.auth, async (req, res) => {
+router.post('/:id/sendComment', auth.isAuth, async (req, res) => {
     try {
         const good = await Good.findById(req.params.id)
         const date = new Date()

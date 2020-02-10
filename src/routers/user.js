@@ -40,7 +40,7 @@ router.post('/login', passport.authenticate('local', {
     failureFlash: true
 }))
 
-router.post('/logout', auth.auth, async (req, res) => {
+router.post('/logout', auth.isAuth, async (req, res) => {
     req.logOut()
     return res.redirect('/')
 })

@@ -8,7 +8,7 @@ const authButtons = require('../middleware/authButtons')
 const router = express.Router()
 
 //GET => /cart
-router.get('/', auth.auth, authButtons, async (req, res) => {
+router.get('/', auth.isAuth, authButtons, async (req, res) => {
     try {
         let cart = await Cart.findOne({ owner: req.user._id })
         const items = await (await cart.populate('items.item').execPopulate()).toObject().items
@@ -20,7 +20,7 @@ router.get('/', auth.auth, authButtons, async (req, res) => {
 })  
 
 //POST => /cart?goodID=goodID
-router.post('/', auth.auth, async (req, res) => {
+router.post('/', auth.isAuth, async (req, res) => {
     try {
         let cart = await Cart.findOne({ owner: req.user._id })
         if (!cart) {
@@ -43,7 +43,7 @@ router.post('/', auth.auth, async (req, res) => {
     }
 })
 
-router.patch('/', auth.auth, async (req, res) => {
+router.patch('/', auth.isAuth, async (req, res) => {
     try {
         const cart = await Cart.findOne({ owner: req.user._id })
         let k = findInCart(cart.toObject(), req.query.goodID)
@@ -64,7 +64,7 @@ router.patch('/', auth.auth, async (req, res) => {
     }
 })
 
-router.delete('/', auth.auth, async (req, res) => {
+router.delete('/', auth.isAuth, async (req, res) => {
     try {
         const cart = await Cart.findOne({ owner: req.user._id })
         let k = findInCart(cart.toObject(), req.query.goodID)

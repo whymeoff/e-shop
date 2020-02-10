@@ -8,7 +8,7 @@ const Order = require('../models/order')
 
 const router = express.Router()
 
-router.get('/orders', auth.auth, authButtons, async (req, res) => {
+router.get('/orders', auth.isAuth, authButtons, async (req, res) => {
     try {
         let orders = await Order.find({ owner: req.user._id }).sort([['status', 1]])
         orders.items = []
@@ -25,7 +25,7 @@ router.get('/orders', auth.auth, authButtons, async (req, res) => {
     }
 })
 
-router.get('/order/:id', auth.auth, authButtons, async (req, res) => {
+router.get('/order/:id', auth.isAuth, authButtons, async (req, res) => {
     try {
         const cart = await Cart.findById(req.params.id)
         if (!cart) return res.redirect('/')
@@ -37,7 +37,7 @@ router.get('/order/:id', auth.auth, authButtons, async (req, res) => {
     }
 })
 
-router.post('/order/:id', auth.auth, async (req, res) => {
+router.post('/order/:id', auth.isAuth, async (req, res) => {
     try {
         const cart = await Cart.findById(req.params.id)
         if (!cart) return res.redirect('/')

@@ -1,4 +1,4 @@
-const auth = (req, res, next) => {
+const isAuth = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next()
     } else {
@@ -13,4 +13,4 @@ const notAuth = (req, res, next) => {
         return next()
     }
 }
-module.exports = { auth, notAuth }
+module.exports = { isAuth, notAuth }
