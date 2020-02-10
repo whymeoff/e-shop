@@ -1,35 +1,7 @@
 <div class="orders-block">
     {{#each orders}}
         <div class="single-order">
-            {{#each this.items}}
-                <div class="good-item">
-                    <div class="left-side">
-                        <div class="img-wrap"><img src="{{this.item.img}}" alt=""></div>
-                    </div>
-                    <div class="middle">
-                        <p class="item-name">{{this.item.name}}</p>
-                        <p class="item-price">{{this.item.price}}UAH</p>
-                    </div>
-                    <div class="right-side">
-                        <div class="amount-set">
-                            <input type="text" value={{this.amount}} disabled>
-                        </div>
-                    </div>
-                    <p class="item-summ">{{multiply this.amount this.item.price}}UAH</p>
-                </div>
-            {{/each}}
-            <div class="order-params-block">
-                <form action="" method="" id="main-form">
-                    <label for="address">Adress(City, post office number)</label>
-                    <input type="text" name="address" id="address" value="{{this.address}}" disabled>
-                    <label for="addressee">Adressee(Full name)</label>
-                    <input type="text" name="addressee" id="addressee" value="{{this.addressee}}" disabled>
-                    <label for="phoneNumber">Phone number</label>
-                    <input type="text" name="phoneNumber" id="phoneNumber" value="{{this.phoneNumber}}" disabled>
-                    <label for="status">Status</label>
-                    <input type="text" name="status" id="status" value="{{#if_eq this.status 0}}Not processed{{/if_eq}}{{#if_eq this.status 1}}In process{{/if_eq}}{{#if_eq this.status 2}}Send{{/if_eq}}{{#if_eq this.status 3}}Delievered{{/if_eq}}" disabled>
-                </form>
-            </div>
+            {{>mainOrderBlock}}
             <div class="in-total-block">
                 <h3>In total</h3>
                 <div class="in-total-text">
