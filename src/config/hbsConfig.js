@@ -6,4 +6,8 @@ hbs.registerHelper('if_eq', function(a, b, opts) {
     } else {
         return opts.inverse(this);
     }
-});
+})
+
+hbs.registerHelper('multiply', function(a, b)  {
+    return a*b
+})

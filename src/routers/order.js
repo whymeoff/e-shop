@@ -1,6 +1,7 @@
 const express = require('express')
 const calcSum = require('../utils/calcSum')
 const auth = require('../middleware/auth')
+const isAdmin = require('../middleware/isAdmin')
 const authButtons = require('../middleware/authButtons')
 const Cart = require('../models/cart')
 const Order = require('../models/order')
@@ -30,6 +31,17 @@ router.post('/:id', auth.auth, async (req, res) => {
         res.redirect('/')
     } catch (e) {
         res.redirect(`/order/${cart._id}`)
+    }
+})
+
+router.patch('/:id', isAdmin, async (req, res) => {
+    console.log(req.query)
+    try {
+        await Order.findByIdAndUpdate(req.params.id, { status: parseInt(req.query.status) })
+        res.send()
+    } catch (e) {
+        console.log(e)
+        res.status(404).send()
     }
 })
 
