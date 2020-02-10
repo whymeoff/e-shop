@@ -32,7 +32,7 @@ router.get('/orders', auth.isAuth, authButtons, async (req, res) => {
 router.get('/order/:id', auth.isAuth, authButtons, async (req, res) => {
     try {
         const cart = await Cart.findById(req.params.id)
-        if (!cart) return res.redirect('/')
+        if (!cart || cart.owner !== req.user._id.toString()) return res.redirect('/')
         const items = await (await cart.populate('items.item').execPopulate()).toObject().items
         calcSum(items)
         res.render('order', { items, ...req.authButtons, cartID: cart._id })
@@ -44,7 +44,7 @@ router.get('/order/:id', auth.isAuth, authButtons, async (req, res) => {
 router.post('/order/:id', auth.isAuth, async (req, res) => {
     try {
         const cart = await Cart.findById(req.params.id)
-        if (!cart) return res.redirect('/')
+        if (!cart || cart.owner !== req.user._id.toString()) return res.redirect('/')
 
         const order = new Order({ ...req.body, owner: cart.owner, items: cart.items })
         await order.save()
