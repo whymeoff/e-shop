@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/orders.css">
+    <title>Document</title>
+</head>
+<body>
+    <header style="max-width: 1440px; margin: auto;">
+        {{>header}}
+    </header>
+
+    <style>
+        .main-block {
+            margin: 32px auto 0;
+            max-width: 1440px;
+            box-shadow: -4px 0px 28px -12px rgba(168,168,168,1);
+            background: white;
+            padding: 32px 0;
+        }
+        .header-text {
+            text-align: center;
+            margin: 0;
+            font-size: 46px;
+            color: rgb(46, 46, 46);
+        }
+    </style>
+    <div class="main-block">
+        <h1 class="header-text">Orders</h1>
+        <div class="orders-block">
+            {{#each orders}}
+                <div class="single-order">
+                    {{>mainOrderBlock}}
+                    <div class="in-total-block">
+                        <h3>In total</h3>
+                        <div class="in-total-text">
+                            <p>To pay</p>
+                            <p class="full-sum">{{this.fullSum}}UAH</p>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

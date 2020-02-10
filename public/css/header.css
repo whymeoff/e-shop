@@ -97,7 +97,7 @@
 
 #logout-btn:hover, #login-btn:hover { background: rgb(53, 167, 110); }
 
-#cart-btn {
+#cart-btn, #orders-btn {
     border: 0;
     font-weight: 700;
     font-size: 14px;
@@ -112,7 +112,11 @@
     cursor: pointer;
 }
 
-#cart-btn:hover {
+#orders-btn {
+    margin-left: 24px;
+}
+
+#cart-btn:hover, #orders-btn:hover {
     box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.75);
     transition: 0.2s;
 }
