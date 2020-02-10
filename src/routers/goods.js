@@ -2,6 +2,7 @@ const express = require('express')
 const auth = require('../middleware/auth')
 const Good = require('../models/good')
 const authButtons = require('../middleware/authButtons')
+const paginationCalc = require('../utils/paginationCalc')
 
 const router = express.Router()
 
@@ -15,8 +16,16 @@ router.get('/', authButtons, async (req, res) => {
         } 
         type = (type === 'low') ? 1 : -1
 
-        const goods = await Good.find({ manufacturer: req.query.manufacturer }).sort([[field, type]])
-        return res.render('goods', { goods, manufacturer: req.query.manufacturer, sortType: req.query.sort || 'price_high', ...req.authButtons })
+        const amount = await Good.countDocuments({ manufacturer: req.query.manufacturer })
+        const pages = paginationCalc(amount)
+
+        const goods = await Good.find({ manufacturer: req.query.manufacturer }).sort([[field || 'price', type]]).skip(parseInt(req.query.skip) || 0).limit(12)
+        return res.render('goods', { goods, 
+                                     manufacturer: req.query.manufacturer, 
+                                     sortType: req.query.sort || 'price_high', 
+                                     ...req.authButtons, 
+                                     pages, 
+                                     current: req.query.skip || 0 })
     } catch (e) {
         console.log(e)
         res.redirect('/')

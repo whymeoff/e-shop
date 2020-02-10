@@ -1,5 +1,6 @@
 const express = require('express')
 const calcSum = require('../utils/calcSum')
+const paginationCalc = require('../utils/paginationCalc')
 const auth = require('../middleware/auth')
 const isAdmin = require('../middleware/isAdmin')
 const authButtons = require('../middleware/authButtons')
@@ -10,7 +11,10 @@ const router = express.Router()
 
 router.get('/orders', auth.isAuth, authButtons, async (req, res) => {
     try {
-        let orders = await Order.find({ owner: req.user._id }).sort([['status', 1]])
+        let orders = await Order.find({ owner: req.user._id }).sort([['status', 1]]).skip(parseInt(req.query.skip) || 0).limit(12)
+        const amount = await Order.countDocuments({ owner: req.user._id })
+        const pages = paginationCalc(amount)
+
         orders.items = []
 
         for (let i = 0; i < orders.length; i++) {
@@ -19,7 +23,7 @@ router.get('/orders', auth.isAuth, authButtons, async (req, res) => {
             orders[i].fullSum = orders.items[i].fullSum
         }
 
-        res.render('orders', { orders, ...req.authButtons })
+        res.render('orders', { orders, ...req.authButtons, pages, current: req.query.skip || 0 })
     } catch (e) {
 
     }
@@ -52,7 +56,6 @@ router.post('/order/:id', auth.isAuth, async (req, res) => {
 })
 
 router.patch('/order/:id', isAdmin, async (req, res) => {
-    console.log(req.query)
     try {
         await Order.findByIdAndUpdate(req.params.id, { status: parseInt(req.query.status) })
         res.send()

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/goods.css">
+    <link rel="stylesheet" href="/css/pages.css">
     <title>Document</title>
 </head>
 <body>
@@ -24,8 +25,13 @@
                 {{>item}}
             {{/each}}
         </div>
+        <div class="pages-block">
+            <p>Pages</p>
+            {{#each pages}}
+                <a href="/goods?manufacturer={{../manufacturer}}&sort={{../sortType}}&skip={{this.[1]}}" style="{{#if_eq this.[1] ../current}}color: #0c559d !important; border-bottom: 1px solid #0c559d;{{/if_eq}}">{{this.[0]}}</a>
+            {{/each}}
+        </div>
     </div>
-    
     <script src="/js/main.js"></script>
 </body>
 </html>

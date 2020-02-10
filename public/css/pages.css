@@ -1,0 +1,15 @@
+.pages-block {
+    text-align: center;
+    padding: 16px 0 32px;
+}
+
+.pages-block a {
+    text-decoration: none;
+    color: rgb(46, 46, 46);
+    font-size: 17px;
+}
+
+.pages-block p {
+    color: rgb(46, 46, 46);
+    margin: 0 0 8px;
+}

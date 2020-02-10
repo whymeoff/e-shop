@@ -2,6 +2,7 @@ const express = require('express')
 const upload = require('../config/multerConfig')
 const fs = require('fs')
 const calcSum = require('../utils/calcSum')
+const paginationCalc = require('../utils/paginationCalc')
 const isAdmin = require('../middleware/isAdmin')
 const authButtons = require('../middleware/authButtons')
 const Good = require('../models/good')
@@ -29,7 +30,10 @@ router.get('/edit', isAdmin, authButtons, (req, res) => {
 })
 
 router.get('/orders', isAdmin, authButtons, async (req, res) => {
-    let orders = await Order.find().sort([['status', 1]])
+    let orders = await Order.find().sort([['status', 1]]).skip(parseInt(req.query.skip) || 0).limit(12)
+    const amount = await Order.countDocuments()
+    const pages = paginationCalc(amount)
+
     orders.items = []
 
     for (let i = 0; i < orders.length; i++) {
@@ -38,7 +42,7 @@ router.get('/orders', isAdmin, authButtons, async (req, res) => {
         orders[i].fullSum = orders.items[i].fullSum
     }
 
-    res.render('admin', { orders, ...req.authButtons })
+    res.render('admin', { orders, ...req.authButtons, pages, current: req.query.skip || 0 })
 })
 
 router.post('/create', isAdmin, authButtons, upload.single('img'), async (req, res) => {

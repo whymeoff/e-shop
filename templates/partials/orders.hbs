@@ -16,4 +16,10 @@
             </div>
         </div>
     {{/each}}
+    <div class="pages-block">
+        <p>Pages</p>
+        {{#each pages}}
+            <a href="/admin/orders?skip={{this.[1]}}" style="{{#if_eq this.[1] ../current}}color: #0c559d !important; border-bottom: 1px solid #0c559d;{{/if_eq}}">{{this.[0]}}</a>
+        {{/each}}
+    </div>
 </div>
